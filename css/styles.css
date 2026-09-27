@@ -1255,61 +1255,6 @@ img {
    14. Skill Rubric + Indicator Pages
    ========================================================= */
 
-/* Indicator tabs under the skill header (Overview, 8.1, 8.2 ...) */
-
-.indicator-nav {
-  margin: -12px 0 30px;
-}
-
-.indicator-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.indicator-nav a {
-  display: inline-block;
-
-  padding: 7px 14px;
-
-  border: 1px solid var(--border);
-  border-radius: 999px;
-
-  background: #fff;
-  color: var(--octc-blue-dark);
-
-  font-size: 0.9rem;
-  font-weight: 750;
-  text-decoration: none;
-}
-
-.indicator-nav a:hover {
-  border-color: var(--octc-blue);
-  background: var(--octc-blue-soft);
-}
-
-.indicator-nav a[aria-current="page"] {
-  border-color: var(--octc-blue-dark);
-  background: var(--octc-blue-dark);
-  color: #fff;
-}
-
-.title-num {
-  display: block;
-  margin-bottom: 4px;
-
-  color: #cfe0ee;
-
-  font-size: 0.5em;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-}
-
-
 /* Full rubric table on a skill's main page. On phones each row
    becomes a stacked card, so nothing scrolls sideways. */
 
@@ -1646,3 +1591,357 @@ img {
     border-bottom: 0;
   }
 }
+
+
+/* =========================================================
+   15. Indicator Band + Bottom Previous/Next
+   ========================================================= */
+
+/* On indicator pages the gold band names the indicator,
+   so the skill name stays the page's main title */
+.header-strip.indicator-strip {
+  margin-top: 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+
+  color: var(--octc-blue-dark);
+
+  font-size: 1.1rem;
+  font-weight: 850;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+/* Labeled previous / next at the bottom of skill pages */
+
+.step-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+
+  margin: 36px 0 0;
+}
+
+.step-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  padding: 14px 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background: #fff;
+  color: var(--octc-blue-dark);
+  text-decoration: none;
+
+  box-shadow: 0 4px 12px rgba(0, 52, 95, 0.06);
+}
+
+.step-link:hover {
+  border-color: var(--octc-blue);
+  background: var(--octc-blue-soft);
+  color: var(--octc-blue-dark);
+}
+
+.step-link.next {
+  text-align: right;
+}
+
+.step-dir {
+  color: var(--muted);
+
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.step-link.prev .step-dir::before {
+  content: "← ";
+  color: var(--octc-gold);
+}
+
+.step-link.next .step-dir::after {
+  content: " →";
+  color: var(--octc-gold);
+}
+
+.step-name {
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+@media (max-width: 560px) {
+  .step-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .step-link.next {
+    text-align: left;
+  }
+
+  .header-strip.indicator-strip {
+    font-size: 1rem;
+  }
+}
+
+
+/* =========================================================
+   16. Skill Navigation: Skill Line + Tab Row
+   Identical on every page of a skill, so moving 8.1 → 8.2 → 8.3
+   changes only the content below it.
+   ========================================================= */
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Indicator title, below the fixed card */
+
+.indicator-heading {
+  margin-bottom: 30px;
+}
+
+.indicator-heading h1 {
+  margin: 0;
+
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+
+  color: var(--octc-blue-dark);
+
+  font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.indicator-num {
+  display: inline-block;
+
+  padding: 3px 12px;
+  border-radius: 8px;
+
+  background: var(--octc-blue-dark);
+  color: #fff;
+
+  font-size: 0.72em;
+  letter-spacing: 0;
+}
+
+.indicator-heading h1::after {
+  content: "";
+  flex-basis: 100%;
+  width: 100%;
+  max-width: 320px;
+  height: 5px;
+  margin-top: 14px;
+
+  border-radius: 5px;
+  background: var(--octc-gold);
+}
+
+.indicator-sub {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+
+/* Skill line: small coin + skill name, plain, links to the overview */
+
+.skill-crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  margin: 4px 0 14px;
+
+  color: var(--octc-blue-dark);
+  text-decoration: none;
+}
+
+.skill-crumb img {
+  flex: none;
+  width: 44px;
+  height: 44px;
+}
+
+.skill-crumb > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.crumb-label {
+  color: var(--octc-blue);
+
+  font-size: 0.74rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.crumb-name {
+  font-size: 1.2rem;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.skill-crumb:hover .crumb-name {
+  text-decoration: underline;
+  text-decoration-color: var(--octc-gold);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+/* Tab row as a segmented control: a pale blue tray with the current
+   page raised as a white tile. Sets the navigation apart from content. */
+
+.skill-tabs {
+  margin: 0 0 34px;
+}
+
+.skill-tabs ul {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+
+  display: grid;
+  grid-template-columns: repeat(var(--tabs, 5), minmax(0, 1fr));
+  gap: 4px;
+
+  border: 1px solid #c9dbea;
+  border-radius: 14px;
+
+  background: #e2eef8;
+  box-shadow: inset 0 1px 3px rgba(0, 52, 95, 0.08);
+}
+
+.skill-tabs a {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 100%;
+
+  padding: 10px 12px 12px;
+
+  border-radius: 10px;
+
+  color: #3d4b58;
+  text-decoration: none;
+
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.skill-tabs a:hover {
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--octc-blue-dark);
+}
+
+.skill-tabs a[aria-current="page"] {
+  background: #fff;
+  color: var(--octc-blue-dark);
+
+  box-shadow:
+    0 1px 2px rgba(0, 52, 95, 0.10),
+    0 6px 16px rgba(0, 52, 95, 0.14);
+}
+
+/* gold edge along the bottom of the current tile */
+.skill-tabs a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+
+  height: 4px;
+  border-radius: 4px 4px 0 0;
+
+  background: var(--octc-gold);
+}
+
+.skill-tabs a:focus-visible {
+  outline-offset: 1px;
+}
+
+.tab-num {
+  color: var(--octc-blue);
+
+  font-size: 1.05rem;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.skill-tabs a[aria-current="page"] .tab-num {
+  color: var(--octc-blue-dark);
+}
+
+.tab-name {
+  font-size: 0.84rem;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.skill-tabs a[aria-current="page"] .tab-name {
+  font-weight: 800;
+}
+
+/* On the overview page the tabs sit right under the big header */
+.header-strip + .skill-tabs {
+  margin-top: -8px;
+}
+
+@media (max-width: 640px) {
+  /* Numbers only on phones; the names stay for screen readers */
+  .tab-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .skill-tabs ul {
+    padding: 4px;
+    gap: 2px;
+  }
+
+  .skill-tabs a {
+    align-items: center;
+    padding: 11px 2px 13px;
+  }
+
+  .skill-tabs a[aria-current="page"]::after {
+    left: 8px;
+    right: 8px;
+  }
+
+  .tab-num {
+    font-size: 0.98rem;
+  }
+
+  .skill-crumb img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .crumb-name {
+    font-size: 1.08rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-tabs a {
+    transition: none;
+  }
+}
+
